@@ -43,26 +43,6 @@ app.put("/update/todo/:name", (req, res) => {
       res.json("todo not found");
     }
   });
-
-  app.delete("/delete/todo/:name", (req, res) => {
-    const name = req.params.name;
-    let x;
-    const found = todos.filter((element, i) => {
-      if (element.todo === name) {
-        x = i;
-        return element;
-      }
-    });
-    todos.splice(x);
-    if (found) {
-      res.status(200);
-      res.json(found);
-    } else {
-      res.status(404);
-      res.json("todo not found");
-    }
-  });
-  
   
 
 
