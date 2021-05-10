@@ -27,6 +27,25 @@ app.post("/create/todo",(req,res)=>{
     res.json("todos") 
 })
 
+app.put("/update/todo/:name", (req, res) => {
+    const name = req.params.name;
+    const found = todos.find((element) => {
+      return element.todo === name;
+    });
+    if (found) {
+      res.status(200);
+      const todo = req.body.todo;
+      const isCompleted = req.body.isCompleted;
+      const newTodo = { todo, isCompleted };
+      res.json(newTodo);
+    } else {
+      res.status(404);
+      res.json("todo not found");
+    }
+  });
+  
+
+
 
 app.listen(port,()=>{
 
