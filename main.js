@@ -15,6 +15,18 @@ app.get("/todos",(req,res)=>{
 })
 
 
+app.post("/create/todo",(req,res)=>{
+
+    const todo = req.query.todo
+    const isCompleted=req.query.isCompleted
+    const todos={todo,isCompleted}
+
+    todo.push()
+    res.status(201)
+    res.json("user added") 
+})
+
+
 app.listen(port,()=>{
 
     console.log(`the server run on http://localhost:${port}`)
