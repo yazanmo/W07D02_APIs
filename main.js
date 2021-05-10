@@ -63,6 +63,26 @@ app.put("/update/todo/:name", (req, res) => {
     }
   });
   
+  app.put("/complete/todo/:name", (req, res) => {
+    const name = req.params.name;
+    let x;
+    const found = todos.filter((element, i) => {
+      if (element.todo === name) {
+        x = i;
+        return element;
+      }
+    });
+    todos[x].isCompleted = true;
+    if (found) {
+      res.status(200);
+  
+      res.json(todos);
+    } else {
+      res.status(404);
+      res.json("todo not found");
+    }
+  });
+  
   
 
 
