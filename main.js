@@ -11,19 +11,20 @@ const todos = [{ todo: " wake up", isCompleted: false },
 
 app.get("/todos",(req,res)=>{
 
-    res.json(todos)
+    res.status(201);
+
+    res.json(todos);
 })
 
 
 app.post("/create/todo",(req,res)=>{
 
-    const todo = req.query.todo
-    const isCompleted=req.query.isCompleted
-    const todos={todo,isCompleted}
+    const newtodo = { todo: req.body.todo,
+         isCompleted: req.body.isCompleted };
 
-    todo.push()
+    todo.push(newtodo)
     res.status(201)
-    res.json("user added") 
+    res.json("todos") 
 })
 
 
