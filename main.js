@@ -83,6 +83,17 @@ app.put("/update/todo/:name", (req, res) => {
     }
   });
   
+  app.get("/completed/todos", (req, res) => {
+    
+    const found = todos.filter((element, i) => {
+        if (element.isCompleted === true) {
+         
+          return element;
+        }
+      });
+     
+  res.json(found);
+});
   
 
 
